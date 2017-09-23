@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>PostbirdAlertBox.js - 原生javascript弹框插件</title>
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <script src="./js/postbirdAlertBox.min.js"></script>
+    <link rel="stylesheet" href="./css/postbirdAlertBox.css">
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="jumbotron" style="margin-top:0;margin-bottom:0;">
+                <h1>PostbirdAlertBox.js</h1>
+                <h2 class="text-right">—— 原生javascript弹框插件</h2>
+                <p>
+                    <a href="https://github.com/postbird/PostbirdPaginatorDriver.js" class="btn btn-primary ">Github：https://github.com/postbird/PostbirdPaginatorDriver.js</a>
+                </p>
+                <p>
+                    <a href="http://postbird.oschina.io/postbirdpaginatordriver.js/" class="btn btn-primary ">GitOSC：http://postbird.oschina.io/postbirdpaginatordriver.js/</a>
+                </p>
+                <blockquote>注：引入Bootstrap.min.css仅提供index.html页面内容显示,无其他作用</blockquote>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="page-header">
+                    <h2>Alert</h2>
+                    <small>点击按钮查看效果</small>
+                </div>
+                <div>
+                    <button onclick="showAlert()" class="btn btn-success ">Alert</button>
+                </div>
+                <hr>
+                <div>
+                    <pre><code>PostbirdAlertBox.alert({
+    'title': '提示标题',
+    'content': '提示内容主体',
+    'okBtn': '好的',
+    'contentColor': 'red',
+    'onConfirm': function () {
+        console.log("回调触发后隐藏提示框");
+        alert("回调触发后隐藏提示框");
+    }
+});</code></pre>
+                </div>
+            </div>
+            <div class="row">
+                <div class="page-header">
+                    <h2>Confirm</h2>
+                    <small>点击按钮查看效果</small>
+                </div>
+                <div>
+                    <button onclick="showConfirm()" class="btn btn-primary">Confirm</button>
+                </div>
+                <hr>
+                <div>
+                    <pre><code>PostbirdAlertBox.confirm({
+    'title': '提示标题',
+    'content': '离开本页面进行跳转',
+    'okBtn': '好的',
+    'contentColor': 'red',
+    'onConfirm': function () {
+        console.log("OK - 回调触发后隐藏提示框");
+        alert("OK - 回调触发后隐藏提示框");
+    },
+    'onCancel': function () {
+        console.log("Cancel-回调触发后隐藏提示框");
+        alert("Cancel-回调触发后隐藏提示框");
+    }
+});</code></pre>
+                </div>
+            </div>
+            <div class="row">
+                <div class="page-header">
+                    <h2>Prompt</h2>
+                    <small>点击按钮查看效果</small>
+                </div>
+                <div>
+                    <button onclick="showPrompt()" class="btn btn-danger">Prompt</button>
+                </div>
+                <hr>
+                <div>
+                    <pre><code>PostbirdAlertBox.prompt({
+    'title': '请输入姓名',
+    'okBtn': '提交',
+    onConfirm: function (data) {
+        console.log("输入框内容是：" + data);
+        alert("输入框内容是：" + data);
+    },
+    onCancel: function (data) {
+        console.log("输入框内容是：" + data);
+        alert("输入框内容是：" + data);
+    },
+});</code></pre>
+                </div>
+            </div>
+            <div class="row">
+                <div class="page-header">
+                    <h2>使用说明</h2>
+                </div>
+                <div class="list-group">
+                    <li class="list-group-item">
+                        1. 引入js 和 css 文件
+                    </li>
+                    <li class="list-group-item">
+                        2. 通过全局对象 PostbirdAlertBox 调用相关方法,三个方法为： <span class="text-success">PostbirdAlertBox.alert({});</span>                        <span class="text-primary">PostbirdAlertBox.confirm({});</span> <span class="text-danger"> PostbirdAlertBox.prompt({});</span>
+                    </li>
+                </div>
+            </div>
+            <div class="row">
+                <div class="page-header">
+                    <h2>配置参数</h2>
+                </div>
+                <table class="table table-hover table-striped">
+                    <thead>
+                        <tr>
+                            <th>参数属性</th>
+                            <th>意义</th>
+                            <th>适用方法</th>
+                            <th>是否必须</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>title</td>
+                            <td>弹框标题</td>
+                            <td>alert、confirm（不适用于prompt）</td>
+                            <td>否，默认 : 提示信息</td>
+                        </tr>
+                        <tr>
+                            <td>promptTitle</td>
+                            <td>prompt标题</td>
+                            <td>prompt</td>
+                            <td>否，默认 :请输入内容</td>
+                        </tr>
+                        <tr>
+                            <td>content</td>
+                            <td>提示内容主体</td>
+                            <td>alert、confirm（不适用于prompt）</td>
+                            <td>否，默认 : 提示内容</td>
+                        </tr>
+                        <tr>
+                            <td>contentColor</td>
+                            <td>提示内容颜色</td>
+                            <td>alert、confirm</td>
+                            <td>否，默认 : #000000</td>
+                        </tr>
+                        <tr>
+                            <td>okBtn</td>
+                            <td>确认按钮文字</td>
+                            <td>alert、confirm （不适用于prompt）</td>
+                            <td>否，默认 : 好的</td>
+                        </tr>
+                        <tr>
+                            <td>promptOkBtn</td>
+                            <td>prompt确认按钮文字</td>
+                            <td>prompt</td>
+                            <td>否，默认 : 确认</td>
+                        </tr>
+                        <tr>
+                            <td>okBtnColor</td>
+                            <td>确认按钮颜色</td>
+                            <td>alert、confirm、prompt</td>
+                            <td>否，默认 : #0e90d2</td>
+                        </tr>
+                        <tr>
+                            <td>cancelBtn</td>
+                            <td>取消按钮文字</td>
+                            <td>alert、confirm、prompt</td>
+                            <td>否，默认 : 取消</td>
+                        </tr>
+                        <tr>
+                            <td>onConfirm</td>
+                            <td>确认按钮事件</td>
+                            <td>alert、confirm、prompt(存在参数data)</td>
+                            <td>否，默认 : 不触发事件</td>
+                        </tr>
+                        <tr>
+                            <td>onCancel</td>
+                            <td>取消按钮事件</td>
+                            <td>alert、confirm、prompt(存在参数data)</td>
+                            <td>否，默认 : 不触发事件</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+            <div class="row">
+                <div class="page-header">
+                    <h2>参数说明</h2>
+                </div>
+                <div class="list-group">
+                    <li class="list-group-item">
+                        1. title 和 promptTitle 分开主要是为了方便不传递title的情况，prompt和alert、confirm的显示文字不同
+                    </li>
+                    <li class="list-group-item">
+                        2. okBtn 和 promptOkBtn 分开同样是为了默认情况下，prompt和alert、confirm的显示文字不同
+                    </li>
+                    <li class="list-group-item">
+                        3. 正如前面的示例代码中，prompt的回调函数，会给予一个data参数，用来获取用户输入的内容
+                    </li>
+                </div>
+            </div>
+            <div class="row">
+                <div class="page-header">
+                    <h2>License</h2>
+                </div>
+                <div class="list-group">
+                    <li class="list-group-item">
+                        MIT
+                    </li>
+                </div>
+            </div>
+            <div class="row text-center">
+                <div class="page-header">
+                    <a href="http://www.ptbird.cn">www.ptbird.cn</a>
+                </div>
+            </div>
+        </div>
+</body>
+<script>
+    function showAlert() {
+        PostbirdAlertBox.alert({
+            'title': '提示',
+            'content': '提示内容主体',
+            'okBtn': '好的',
+            'contentColor': 'red',
+            'onConfirm': function () {
+                console.log("回调触发后隐藏提示框");
+                alert("回调触发后隐藏提示框");
+            }
+        });
+    }
+    function showConfirm() {
+        PostbirdAlertBox.confirm({
+            'title': '提示',
+            'content': '离开本页面进行跳转',
+            'okBtn': '好的',
+            'contentColor': 'red',
+            'onConfirm': function () {
+                console.log("OK - 回调触发后隐藏提示框");
+                alert("OK - 回调触发后隐藏提示框");
+            },
+            'onCancel': function () {
+                console.log("Cancel-回调触发后隐藏提示框");
+                alert("Cancel-回调触发后隐藏提示框");
+            }
+        });
+    }
+    function showPrompt() {
+        PostbirdAlertBox.prompt({
+            'title': '请输入姓名',
+            'okBtn': '提交',
+            onConfirm: function (data) {
+                console.log("输入框内容是：" + data);
+                alert("输入框内容是：" + data);
+            },
+            onCancel: function (data) {
+                console.log("输入框内容是：" + data);
+                alert("输入框内容是：" + data);
+            },
+        });
+    }
+
+</script>
+
+</html>
