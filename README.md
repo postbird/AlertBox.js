@@ -3,7 +3,7 @@
 
 ## 在线体验：
 
-<a href="http://postbird.oschina.io/postbirdpaginatordriver.js/" target="_blank">http://postbird.oschina.io/postbirdpaginatordriver.js/</a>
+<a href="http://postbird.oschina.io/postbirdalertbox.js/" target="_blank">http://postbird.oschina.io/postbirdalertbox.js/</a>
 
 ## 优点：
 - 无需手动写入html
