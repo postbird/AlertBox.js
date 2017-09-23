@@ -14,7 +14,7 @@
 ### 1. 引入文件：
 ```
 postbirdAlertBox.js
-postbirdAlertBox.js
+postbirdAlertBox.css
 ```
 ### 2. 调用方式：
 
