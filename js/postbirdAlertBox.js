@@ -7,6 +7,7 @@
  */
 var PostbirdAlertBox = {
     containerClass: 'postbird-box-container active',
+    box: null, // 用于标识增加的div
     textTemplate: {
         title: '提示信息',
         content: '提示内容',
@@ -89,13 +90,14 @@ var PostbirdAlertBox = {
             _this = this;
         box.className = this.containerClass;
         box.innerHTML = this.getAlertTemplate();
-        document.body.appendChild(box);
+        this.box = box;
+        document.body.appendChild();
         var btn = document.getElementsByClassName('btn-footer-ok');
         btn[btn.length - 1].onclick = function () {
             if (opt.onConfirm) {
                 opt.onConfirm();
             }
-            _this.removeBox(box);
+            _this.removeBox();
         }
     },
     confirm: function (opt) {
@@ -105,8 +107,10 @@ var PostbirdAlertBox = {
         this.textTemplate.okBtnColor = opt.okBtnColor || this.textTemplate.okBtnColor;
         this.textTemplate.cancelBtn = opt.cancelBtn || this.textTemplate.cancelBtn;
         this.textTemplate.cancelBtnColor = opt.cancelBtnColor || this.textTemplate.cancelBtnColor;
+        this.textTemplate.content = opt.content || this.textTemplate.content;
         var box = document.createElement("div"),
             _this = this;
+        this.box = box;
         box.className = this.containerClass;
         box.innerHTML = this.getConfirmTemplate();
         document.body.appendChild(box);
@@ -115,14 +119,14 @@ var PostbirdAlertBox = {
             if (opt.onConfirm) {
                 opt.onConfirm();
             }
-            _this.removeBox(box);
+            _this.removeBox();
         }
         var cancelBtn = document.getElementsByClassName('btn-footer-cancel');
         cancelBtn[cancelBtn.length - 1].onclick = function () {
             if (opt.onCancel) {
                 opt.onCancel();
             }
-            _this.removeBox(box);
+            _this.removeBox();
         }
     },
     prompt: function (opt) {
@@ -137,6 +141,7 @@ var PostbirdAlertBox = {
             _this = this;
         box.className = this.containerClass;
         box.innerHTML = this.getPromptTemplate();
+        this.box = box;
         document.body.appendChild(box);
         var promptInput = document.getElementsByClassName('postbird-prompt-input');
         promptInput = promptInput[promptInput.length - 1];
@@ -147,17 +152,20 @@ var PostbirdAlertBox = {
             if (opt.onConfirm) {
                 opt.onConfirm(promptInput.value);
             }
-            _this.removeBox(box);
+            _this.removeBox();
         }
         var cancelBtn = document.getElementsByClassName('btn-footer-cancel');
         cancelBtn[cancelBtn.length - 1].onclick = function () {
             if (opt.onCancel) {
                 opt.onCancel(promptInput.value);
             }
-            _this.removeBox(box);
+            _this.removeBox();
         }
     },
-    removeBox: function (box) {
+    colse: function () {
+        this.removeBox();
+    },
+    removeBox: function () {
         var box = document.getElementsByClassName(this.containerClass);
         document.body.removeChild(box[box.length - 1]);
     }
