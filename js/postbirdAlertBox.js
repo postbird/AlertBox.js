@@ -91,8 +91,9 @@ var PostbirdAlertBox = {
         box.className = this.containerClass;
         box.innerHTML = this.getAlertTemplate();
         this.box = box;
-        document.body.appendChild();
+        document.body.appendChild(this.box);
         var btn = document.getElementsByClassName('btn-footer-ok');
+        btn[btn.length - 1].focus();
         btn[btn.length - 1].onclick = function () {
             if (opt.onConfirm) {
                 opt.onConfirm();
@@ -115,6 +116,7 @@ var PostbirdAlertBox = {
         box.innerHTML = this.getConfirmTemplate();
         document.body.appendChild(box);
         var okBtn = document.getElementsByClassName('btn-footer-ok');
+        okBtn[okBtn.length - 1].focus();
         okBtn[okBtn.length - 1].onclick = function () {
             if (opt.onConfirm) {
                 opt.onConfirm();
