@@ -5,6 +5,13 @@
 
 <a href="http://postbird.oschina.io/postbirdalertbox.js/" target="_blank">http://postbird.oschina.io/postbirdalertbox.js/</a>
 
+## 更新
+
+- 2018-07-08
+
+  - 修复由于 button focus 状态未清除导致的 enter 下重复触发的问题
+  - 将 focus 重定向到弹框的 button 中，默认 enter 键操作时 alert/confirm 的确认操作
+
 ## 优点：
 - 无需手动写入html
 - 支持回调
